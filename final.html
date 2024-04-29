@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="quizzawardpage.css"> <!-- Ensure you have this CSS file for styles -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+ 
+    
+    <div id="results-container">
+        <h1>LEARNING RADIUS</h1>
+        <h2>Well Done, <span class="name">[Name]</span>!</h2>
+
+        <div id="learning-radius-info">
+            <h2>Learning Radius: Background and Introduction</h2>
+            <p>Learning Radius is reshaping educational technology with a unique assessment tool designed to uncover a student's strengths, personality, and emotional intelligence. This innovative platform not only evaluates abilities but also suggests potential career paths tailored to individual profiles. Students can enroll and engage in comprehensive assessments, gaining insights that help them make informed educational and career choices. With personalized counseling included, Learning Radius equips students to navigate their futures effectively, empowering them to align their paths with their inherent talents and ambitions.</p>        
+        <p>Engaging, insightful, and transformative, Learning Radius is not just about understanding where you stand today but about unlocking where you could go tomorrow.
+ </p>
+ </div>
+        <div id="test-creator-info">
+            <h2>The Master Brains Behind MindsUp Test</h2>
+<p>Before its release, the MindsUp test was rigorously honed through pilot studies and detailed analyses, grounded in psychological theories like Holland's and Ackerman's. Unlike typical academic assessments, MindsUp evaluates unique personal strengths and personality traits, providing tailored career guidance for adolescents facing identity crises.
+</p>
+<p>Designed for students, the platform facilitates a comprehensive evaluation that transcends skill measurement. MindsUp offers a holistic view of one’s strengths, weaknesses, and emotional intelligence, suggesting career paths suited to each individual's unique profile, thereby enlightening and guiding students towards informed educational and career choices.
+</p>      </div>
+        
+        <div id="domain-scores">
+            <h2>Your Profile Summary</h2>
+            <p>This section offers a summary of your scores. However, the total score for each section is not mentioned because they represent just numbers. What truly matters is your unique abilities. We encourage you to explore the subdomains of Emotional Quotient and Personality that reflects who you are. </p>
+        </div>
+        <div id="percentage-scores">
+            <h2> Identify Your Strengths</h2>
+            <p>This section details your greatest strengths, highlighting areas where you excel and should focus on further developing your skills. Each category represents a unique aspect of your capabilities, providing a clear direction for where to channel your efforts for personal growth and skill enhancement. Here’s a closer look at where you stand:</p>
+        </div>
+        <div id="percentage-chart-container">
+            <canvas id="percentage-chart"></canvas>
+        </div>
+        
+
+        <div id="subdomain-scores">
+            <h2>A Deep Analysis of your Personality Type and Emotional Quotient</h2>
+            <p>This section offers a detailed analysis of your Personality Type and Emotional Quotient, highlighting your interactions and emotional management. The scores across various dimensions reveal your strengths and areas for growth, helping you harness and enhance your capabilities. Here are your detailed results:</p>
+        </div>
+        <div id="personality-chart-container" style="width: 100%; height: 300px;">
+            <canvas id="personality-chart"></canvas>
+        </div>
+        <div id="emotional-awareness-chart-container" style="width: 100%; height: 300px;">
+            <canvas id="emotional-awareness-chart"></canvas>
+        </div>
+        <div id="domain-details"></div> <!-- Container for domain insights -->
+        <div id="emotional-awareness-details"></div>
+
+
+        <div id="job-recommendation"></div>
+
+        
+        <button onclick="window.location.href='quiz.html';">Retake Quiz</button>
+        <button onclick="window.location.href='home.html';">Go to Home</button>
+    </div>
+<!-- Add this button somewhere in your HTML where it's appropriate -->
+<button onclick="printPage()">Print Results</button>
+
+    <script src="finalaward.js" defer></script>
+    <script src="userinfo.js" defer ></script>
+</body>
+</html>

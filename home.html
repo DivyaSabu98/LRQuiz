@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter the Challenge - Quiz Game</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="home.css"> <!-- Your custom CSS file -->
+</head>
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="#home.html" class="brand-logo center">LEARNING RADIUS</a>
+        </div>
+    </nav>
+
+    <div class="container section">
+        <div class="row">
+            <div class="col s12 l6 offset-l3 form-container">
+                <form name="id" onsubmit="submitted(event)">
+                    <h4 class="center-align black-text"></h4>
+                    <div class="animated-welcome">All the best for your Quiz!</div>
+
+                    <div class="progress yellow lighten-2">
+                        <div class="indeterminate yellow darken-4"></div>
+                    </div>
+
+                    <!--Submit name field-->   
+                    <div class="input-field">
+                        <i class="material-icons white-text prefix">account_box</i>
+                        <input type="text" class="white-text" id="name">
+                        <label for="name">Name Here</label>
+                        <p class="center"><button type="submit" class="btn blue">Submit Name</button></p>
+                    </div>
+
+                    <!-- Age Input Field -->
+                    <div id="ageInput" style="display: none;">
+                        <div class="input-field">
+                            <i class="material-icons white-text prefix">accessibility</i>
+                            <input type="number" class="white-text" id="age">
+                            <label for="age">Your Age</label>
+                            <p class="center"><button type="button" class="btn blue" onclick="submitAge()">Submit Age</button></p>
+                        </div>
+                    </div>
+
+                    <!-- Gender Input Field -->
+                    <div id="genderInput" style="display: none;">
+                        <p class="white-text">Select your gender:</p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="gender" type="radio" value="male"/>
+                                <span class="white-text">Male</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="gender" type="radio" value="female"/>
+                                <span class="white-text">Female</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input class="with-gap" name="gender" type="radio" value="other"/>
+                                <span class="white-text">Other</span>
+                            </label>
+                        </p>
+                        <p class="center">
+                            <button type="button" class="btn blue" onclick="submitGender()">Submit Gender</button>
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="black-text white ">1. Please complete the test in one sitting; the progress bar shows your status.</p>
+                        <p class="black-text white ">2. Each quiz item has a time limit of 30 seconds which is indicated.</p>
+                        <p class="black-text white ">3. Once you click on submit button you will recieve a printable result.</p>
+                    </div>
+
+                    <div class="progress yellow">
+                        <div class="indeterminate"></div>
+                    </div>
+
+                    <!-- Let's Start Button -->
+                    <p class="center">
+                        <a href="#" class="btn blue" id="startButton" onclick="startQuiz()">Let's Start</a>
+                    </p>
+                    
+                </form>
+            </div>
+        </div>
+    </section>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ 
+<script>
+    function submitted(e){
+        e.preventDefault();
+
+        let namee = document.forms["id"]["name"].value;
+        sessionStorage.setItem("name", namee);
+        
+        // Show the age input field after submitting name
+        document.getElementById("ageInput").style.display = "block";
+    }
+
+    // Function to submit age
+    function submitAge() {
+        let age = document.getElementById("age").value;
+        console.log("Age submitted:", age); // Check if age is correctly retrieved
+
+        // Here you can do whatever you want with the age value
+        sessionStorage.setItem("age", age);
+
+        // Show the gender input field after submitting age
+        document.getElementById("genderInput").style.display = "block";
+    }
+
+    // Function to submit gender
+    function submitGender() {
+        let genderInputs = document.getElementsByName("gender");
+        let selectedGender;
+        for (let i = 0; i < genderInputs.length; i++) {
+            if (genderInputs[i].checked) {
+                selectedGender = genderInputs[i].value;
+                break;
+            }
+        }
+        if (selectedGender) {
+            console.log("Gender submitted:", selectedGender); // Check if gender is correctly retrieved
+
+            // Here you can do whatever you want with the gender value
+            sessionStorage.setItem("gender", selectedGender);
+
+            // Enable the "Let's Start" button after submitting gender
+            let startButton = document.getElementById("startButton");
+            console.log("Start button:", startButton); // Check if start button element is correctly retrieved
+            startButton.classList.remove("disabled"); // Remove disabled class
+        } else {
+            // Show an alert or some message to prompt the user to select a gender
+            alert("Please select your gender before starting the quiz.");
+        }
+    }
+
+    // Function to check if both name, age, and gender are submitted and start the quiz
+    function startQuiz() {
+        let namee = sessionStorage.getItem("name");
+        let age = sessionStorage.getItem("age");
+        let gender = sessionStorage.getItem("gender");
+        if (namee && age && gender) {
+            // Both name, age, and gender are submitted, proceed to quiz page
+            window.location.href = "quiz.html";
+        } else {
+            // Show an alert or some message to prompt the user to submit all required information
+            alert("Please submit your name, age, and gender before starting the quiz.");
+        }
+    }
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.querySelector('.black-background').classList.add('active');
+        } else {
+            document.querySelector('.black-background').classList.remove('active');
+        }
+    }
+    
+</script>
+
+</body>
+</html>
